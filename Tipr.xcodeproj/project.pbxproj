@@ -14,6 +14,7 @@
 		098DBF1E1F4A938C00880974 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098DBF1C1F4A938C00880974 /* LaunchScreen.storyboard */; };
 		098DBF291F4A938C00880974 /* TiprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DBF281F4A938C00880974 /* TiprTests.swift */; };
 		098DBF341F4A938C00880974 /* TiprUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DBF331F4A938C00880974 /* TiprUITests.swift */; };
+		098DBF441F4AA97300880974 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DBF431F4AA97300880974 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		098DBF2F1F4A938C00880974 /* TiprUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TiprUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098DBF331F4A938C00880974 /* TiprUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiprUITests.swift; sourceTree = "<group>"; };
 		098DBF351F4A938C00880974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		098DBF431F4AA97300880974 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		098DBF121F4A938B00880974 /* Tipr */ = {
 			isa = PBXGroup;
 			children = (
+				098DBF431F4AA97300880974 /* SettingsViewController.swift */,
 				098DBF131F4A938C00880974 /* AppDelegate.swift */,
 				098DBF151F4A938C00880974 /* ViewController.swift */,
 				098DBF171F4A938C00880974 /* Main.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				098DBF161F4A938C00880974 /* ViewController.swift in Sources */,
 				098DBF141F4A938C00880974 /* AppDelegate.swift in Sources */,
+				098DBF441F4AA97300880974 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
