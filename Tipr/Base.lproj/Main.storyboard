@@ -143,13 +143,43 @@
                     <view key="view" contentMode="scaleToFill" id="3mg-Zd-wv2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Tip Percent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BY-8K-ONg">
+                                <rect key="frame" x="16" y="80" width="343" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RXq-on-Eb8">
+                                <rect key="frame" x="17" y="116" width="343" height="29"/>
+                                <segments>
+                                    <segment title="22%"/>
+                                    <segment title="20%"/>
+                                    <segment title="18%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onChange:" destination="3N1-CE-8Hc" eventType="valueChanged" id="00h-yo-nvn"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RXq-on-Eb8" firstAttribute="leading" secondItem="3mg-Zd-wv2" secondAttribute="leadingMargin" id="HfR-L7-kZZ"/>
+                            <constraint firstItem="0BY-8K-ONg" firstAttribute="top" secondItem="5Vk-ir-pvp" secondAttribute="bottom" constant="16" id="UOk-Ul-d7l"/>
+                            <constraint firstItem="RXq-on-Eb8" firstAttribute="top" secondItem="0BY-8K-ONg" secondAttribute="bottom" constant="16" id="mqa-Pn-BEN"/>
+                            <constraint firstItem="0BY-8K-ONg" firstAttribute="leading" secondItem="3mg-Zd-wv2" secondAttribute="leadingMargin" id="rpG-np-RS4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RXq-on-Eb8" secondAttribute="trailing" id="w8a-Nl-3RR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0BY-8K-ONg" secondAttribute="trailing" id="zyX-4C-V3T"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gdF-hK-i82"/>
+                    <connections>
+                        <outlet property="defaultTipPercentageControl" destination="RXq-on-Eb8" id="npU-lF-7GF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETq-De-fVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="155"/>
+            <point key="canvasLocation" x="977.5" y="154.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5co-Sr-ri4">

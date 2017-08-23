@@ -14,14 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var tipWrapperView: UIView!
     @IBOutlet weak var tipDetailsView: UIView!
+    @IBOutlet weak var tipPercentageControl: UISegmentedControl!
+    @IBOutlet weak var totalAmountLabel: UILabel!
+    @IBOutlet weak var tipAmountLabel: UILabel!
     var tipPercentages = [0.22, 0.20, 0.18]
     var isShowingDetails = false
     var billFieldCenterYAnchorConstraint: NSLayoutConstraint?
     var billFieldTopAnchorConstraint: NSLayoutConstraint?
-
-    @IBOutlet weak var tipPercentageControl: UISegmentedControl!
-    @IBOutlet weak var totalAmountLabel: UILabel!
-    @IBOutlet weak var tipAmountLabel: UILabel!
+    let defaultTipPercentageIndexKey = "default_tip_percentage_index"
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
         billFieldCenterYAnchorConstraint = billField.centerYAnchor.constraint(equalTo: tipWrapperView.centerYAnchor)
         billFieldCenterYAnchorConstraint?.isActive = true
         tipPercentageControl.translatesAutoresizingMaskIntoConstraints = false
+        tipPercentageControl.selectedSegmentIndex = getExistingIndex()
     }
 
     deinit {
@@ -146,6 +148,16 @@ class ViewController: UIViewController {
             animations: { self.view.layoutIfNeeded() },
             completion: nil
         )
+    }
+
+    func getExistingIndex() -> Int {
+        let existingIndex = defaults.string(forKey: defaultTipPercentageIndexKey)
+        
+        if (existingIndex != nil) {
+            return Int(existingIndex!)!
+        }
+        
+        return 1
     }
 }
 
