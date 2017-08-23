@@ -14,37 +14,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var tipWrapperView: UIView!
     @IBOutlet weak var tipDetailsView: UIView!
-    var tipPercentages = [0.18, 0.20, 0.22]
+    var tipPercentages = [0.22, 0.20, 0.18]
     var isShowingDetails = false
     var billFieldCenterYAnchorConstraint: NSLayoutConstraint?
     var billFieldTopAnchorConstraint: NSLayoutConstraint?
-    var tipPercentageControl: UISegmentedControl!
 
+    @IBOutlet weak var tipPercentageControl: UISegmentedControl!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var tipAmountLabel: UILabel!
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("view will appear")
-        tipPercentageControl = UISegmentedControl()
-        tipPercentageControl.translatesAutoresizingMaskIntoConstraints = false
-        tipPercentageControl.insertSegment(withTitle: "18%", at: 0, animated: true)
-        tipPercentageControl.insertSegment(withTitle: "20%", at: 1, animated: true)
-        tipPercentageControl.insertSegment(withTitle: "22%", at: 2, animated: true)
-        tipPercentageControl.selectedSegmentIndex = 1
-        tipPercentageControl.isHidden = true
-        tipWrapperView.addSubview(tipPercentageControl)
-        tipDetailsView.topAnchor.constraint(equalTo: tipPercentageControl.bottomAnchor, constant: 16).isActive = true
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load")
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillChangeFrame(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         billField.translatesAutoresizingMaskIntoConstraints = false
         billFieldCenterYAnchorConstraint = billField.centerYAnchor.constraint(equalTo: tipWrapperView.centerYAnchor)
         billFieldCenterYAnchorConstraint?.isActive = true
+        tipPercentageControl.translatesAutoresizingMaskIntoConstraints = false
     }
 
     deinit {
@@ -65,25 +52,30 @@ class ViewController: UIViewController {
         let text =  billField.text ?? nil
         if ((text) != nil && text!.characters.count > 0) {
             // TODO handle error if text is not a number
-            showBillDetails(amount: Double(text!)!)
+            showBillDetails()
+            updateTipAndTotal()
         } else {
             hideBillDetails()
         }
     }
 
-    @IBAction func onTap(_ sender: Any) {
+    @IBAction func onChange(_ sender: Any) {
+        updateTipAndTotal()
     }
 
-    func showBillDetails(amount: Double) {
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+
+    func showBillDetails() {
         if (!isShowingDetails) {
             isShowingDetails = true;
             //create details subview and animate into place
             
             tipPercentageControl.topAnchor.constraint(equalTo: billField.bottomAnchor, constant: 16).isActive = true
-            tipPercentageControl.leadingAnchor.constraint(equalTo: tipWrapperView.leadingAnchor, constant: 0).isActive = true
-            tipPercentageControl.trailingAnchor.constraint(equalTo: tipWrapperView.trailingAnchor, constant: 0).isActive = true
             tipPercentageControl.isHidden = false
             tipPercentageControl.alpha = 0.0
+            tipDetailsView.topAnchor.constraint(equalTo: tipPercentageControl.bottomAnchor, constant: 16).isActive = true
             tipDetailsView.isHidden = false
             tipDetailsView.alpha = 0.0
             self.view.layoutIfNeeded()
@@ -103,12 +95,18 @@ class ViewController: UIViewController {
                 }
             )
         }
+    }
 
-        let selectedTipPercent = tipPercentages[tipPercentageControl.selectedSegmentIndex]
-        let tip = amount * selectedTipPercent
-        let total = amount + tip
-        tipAmountLabel.text = String(format: "$%.2f", tip)
-        totalAmountLabel.text = String(format: "$%.2f", total)
+    func updateTipAndTotal() {
+        let text =  billField.text ?? nil
+        if ((text) != nil && text!.characters.count > 0) {
+            let selectedTipPercent = tipPercentages[tipPercentageControl.selectedSegmentIndex]
+            let amount = Double(text!)!
+            let tip = amount * selectedTipPercent
+            let total = amount + tip
+            tipAmountLabel.text = String(format: "$%.2f", tip)
+            totalAmountLabel.text = String(format: "$%.2f", total)
+        }
     }
 
     func hideBillDetails() {

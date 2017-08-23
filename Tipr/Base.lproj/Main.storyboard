@@ -73,14 +73,27 @@
                                             <constraint firstAttribute="trailing" secondItem="XuS-Ma-eh5" secondAttribute="trailing" constant="16" id="tke-R3-cZr"/>
                                         </constraints>
                                     </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Eub-IY-ut3">
+                                        <rect key="frame" x="0.0" y="309" width="343" height="29"/>
+                                        <segments>
+                                            <segment title="22%"/>
+                                            <segment title="20%"/>
+                                            <segment title="18%"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="onChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="LuU-Bq-H7X"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ftu-D1-PuG" secondAttribute="trailing" constant="-16" id="7au-8i-mSO"/>
+                                    <constraint firstItem="Eub-IY-ut3" firstAttribute="leading" secondItem="vJE-v4-seq" secondAttribute="leading" id="Ogq-HF-W1F"/>
                                     <constraint firstItem="ftu-D1-PuG" firstAttribute="leading" secondItem="vJE-v4-seq" secondAttribute="leading" constant="-16" id="Rk6-HZ-Zt9"/>
                                     <constraint firstItem="4qS-d2-gRk" firstAttribute="leading" secondItem="vJE-v4-seq" secondAttribute="leading" id="alr-PE-5eg"/>
                                     <constraint firstAttribute="trailing" secondItem="4qS-d2-gRk" secondAttribute="trailing" id="dmB-cN-d1B"/>
                                     <constraint firstAttribute="bottom" secondItem="ftu-D1-PuG" secondAttribute="bottom" constant="-32" id="iUS-if-POv"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eub-IY-ut3" secondAttribute="trailing" id="qof-43-PrP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -92,9 +105,6 @@
                             <constraint firstItem="vJE-v4-seq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vnb-vv-kFB"/>
                             <constraint firstItem="vJE-v4-seq" firstAttribute="top" secondItem="mqm-wP-w6r" secondAttribute="bottom" constant="32" id="zWy-pW-e8h"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="ZEe-6u-3CM" appends="YES" id="eRR-QK-psC"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tipr" id="3b4-R8-0u7">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="v2Y-nn-B5s">
@@ -108,6 +118,7 @@
                         <outlet property="bottomContainerConstraint" destination="qK1-Ly-b5f" id="ifj-B9-ltP"/>
                         <outlet property="tipAmountLabel" destination="9EF-HG-9cf" id="KsX-dX-avm"/>
                         <outlet property="tipDetailsView" destination="ftu-D1-PuG" id="SgO-q9-oBm"/>
+                        <outlet property="tipPercentageControl" destination="Eub-IY-ut3" id="mOa-lp-pWw"/>
                         <outlet property="tipWrapperView" destination="vJE-v4-seq" id="idM-fh-vDg"/>
                         <outlet property="totalAmountLabel" destination="XuS-Ma-eh5" id="ya6-eW-ZSY"/>
                     </connections>
@@ -115,7 +126,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="ZEe-6u-3CM">
                     <connections>
-                        <action selector="onTap:" destination="BYZ-38-t0r" id="wQT-IY-DFo"/>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="ima-B0-GC0"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
